@@ -7,7 +7,7 @@ name_words = []
 animals = []
 objects = []
 statements = []
-houses = []
+planets = []
 
 numbers = list(range(1, 13))
 
@@ -19,7 +19,7 @@ def setup():
     filename_animals = "complex/data/animals.txt"
     filename_objects = "complex/data/objects.txt"
     filename_statements = "complex/data/stand_alone_statements.txt"
-    filename_houses = "complex/data/marlborough_house_groups.txt"
+    filename_planets = "complex/data/planets.txt"
 
     with open(filename_names) as f:
         for line in f:
@@ -41,9 +41,9 @@ def setup():
         for line in f:
             statements.append(line.strip())
 
-    with open(filename_houses) as f:
+    with open(filename_planets) as f:
         for line in f:
-            houses.append(line.strip())
+            planets.append(line.strip())
 
 def words(number):
     """Prints a grammatically correct statement based off of the pre-built lists and the number provided."""
@@ -87,7 +87,7 @@ def words(number):
         print(f"{random.choice(names)}<{random.choice(names)}")
 
     elif number == 12:
-        print(f"{random.choice(houses)} is the best!")
+        print(f"{random.choice(planets)} is the best!")
 
 def main():
     """The main loop of the 'AI'. """
