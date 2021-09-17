@@ -1,0 +1,11 @@
+pig
+cow
+sheep
+chicken
+panda
+fox
+eagle
+koala
+axolotl
+whale
+narwhal
