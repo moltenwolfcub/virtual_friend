@@ -130,6 +130,14 @@ def words(number):
     elif number == 12:
         print(f"{random.choice(planets)} is the best!")
 
+    elif number == 13:
+        print(f"Hello, {random.choice(names)}")
+
+    elif number == 14:
+        answer = input("What is your name?")
+        names.append(answer)
+        print(f"Hello, {answer}. \n you're name is now in my database.")
+
 def main():
     """The main loop of the 'AI'. """
 
