@@ -1,49 +1,90 @@
-from os import name, stat_result
 import random, time
-from grammar import pluralise
 
-names = []
-name_words = []
-animals = []
-objects = []
-statements = []
-planets = []
+def pluralise(word):
+    stay_same = ["sheep", "deer", "series", "species"]
+    
+    if word in stay_same:
+        return(word)
+        
+    elif word[-1].lower() in ["s", "x", "z", "o"]:
+        return(f"{word}es")
+
+    elif word[-1].lower() == "f":
+        return(f"{word[:1]}ves")
+
+    elif word[-1].lower() == "y" and word[-2].lower() in "aeiou":
+        return(f"{word}s")
+
+    elif word[-1].lower() == "y" and word[-2].lower() not in "aeiou":
+        return(f"{word[:-1]}ies")
+    
+    elif word[-1].lower() == "s" and word[-2].lower() == "u":
+        return(f"{word[:-2]}i")
+    
+    elif word[-1].lower() == "s" and word[-2].lower() == "i":
+        return(f"{word[:-2]}es")
+
+    elif word[-1].lower() == "n" and word[-2].lower() == "o":
+        return(f"{word[:-2]}a")
+    
+    else:
+        return(f"{word}s")
+
+
+names = [
+    "Steve"
+]
+name_words = [
+    "is amazing"
+]
+animals = [
+    "pig"
+]
+objects = [
+    "nuclear bomb"
+]
+statements = [
+    "How long do I have to wait?"
+]
+planets = [
+    "Neptune"
+]
 
 numbers = list(range(1, 13))
 
-def setup():
-    """Opens up the data from the files and turns it into a list."""
-
-    filename_names = "complex/data/names.txt"
-    filename_name_statements = "complex/data/name_statments.txt"
-    filename_animals = "complex/data/animals.txt"
-    filename_objects = "complex/data/objects.txt"
-    filename_statements = "complex/data/stand_alone_statements.txt"
-    filename_planets = "complex/data/planets.txt"
-
-    with open(filename_names) as f:
-        for line in f:
-            names.append(line.strip())
-
-    with open(filename_name_statements) as f:
-        for line in f:
-            name_words.append(line.strip())
-
-    with open(filename_animals) as f:
-        for line in f:
-            animals.append(line.strip())
-
-    with open(filename_objects) as f:
-        for line in f:
-            objects.append(line.strip())
-
-    with open(filename_statements) as f:
-        for line in f:
-            statements.append(line.strip())
-
-    with open(filename_planets) as f:
-        for line in f:
-            planets.append(line.strip())
+#def setup():
+#    """Opens up the data from the files and turns it into a list."""
+#
+#    filename_names = "data/names.txt"
+#    filename_name_statements = "data/name_statments.txt"
+#    filename_animals = "data/animals.txt"
+#    filename_objects = "data/objects.txt"
+#    filename_statements = "data/stand_alone_statements.txt"
+#    filename_planets = "data/planets.txt"
+#
+#    with open(filename_names) as f:
+#        for line in f:
+#            names.append(line.strip())
+#
+#    with open(filename_name_statements) as f:
+#        for line in f:
+#            name_words.append(line.strip())
+#
+#    with open(filename_animals) as f:
+#        for line in f:
+#            animals.append(line.strip())
+#
+#    with open(filename_objects) as f:
+#        for line in f:
+#            objects.append(line.strip())
+#
+#    with open(filename_statements) as f:
+#        for line in f:
+#            statements.append(line.strip())
+#
+#    with open(filename_planets) as f:
+#        for line in f:
+#            planets.append(line.strip())
 
 def words(number):
     """Prints a grammatically correct statement based off of the pre-built lists and the number provided."""
@@ -52,12 +93,12 @@ def words(number):
         print(f"{random.choice(names)} {random.choice(name_words)}")
     
     elif number == 2:
-        anichoice = random.choice(animals)
-        if anichoice[0].lower() in "aeiou":
-            print(f"{random.choice(names)} is an {anichoice}")
+        anychoice = random.choice(animals)
+        if anychoice[0].lower() in "aeiou":
+            print(f"{random.choice(names)} is an {anychoice}")
         
         else:
-            print(f"{random.choice(names)} is a {anichoice}")
+            print(f"{random.choice(names)} is a {anychoice}")
 
     elif number == 3:
         print(f"{random.choice(names)} likes {pluralise(random.choice(animals))}")
@@ -92,7 +133,7 @@ def words(number):
 def main():
     """The main loop of the 'AI'. """
 
-    setup()
+    #setup()
     while True:
         randomnum = random.choice(numbers)
 
